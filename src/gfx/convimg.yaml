@@ -1,0 +1,25 @@
+palettes: 
+  - name: player_palette
+    images: automatic
+  - name: tileset_palette
+    images: automatic
+
+converts:
+  - name: player_textures
+    palette: player_palette
+    images:
+      - alex_forward_still.png
+  - name: tileset_textures
+    palette: tileset_palette
+    images:
+      - basic_grass_tileset.png
+
+outputs:
+  - type: c
+    include-file: gfx.h
+    palettes:
+      - player_palette
+      - tileset_palette
+    converts:
+      - player_textures
+      - tileset_textures
