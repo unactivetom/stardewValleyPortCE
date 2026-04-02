@@ -1,11 +1,12 @@
 #include <graphx.h>
 #include <keypadc.h>
-#include <math.h>
 #include "gfx/gfx.h"
+
+extern unsigned char basic_grasspaths_map_map[]; // include tilemap data
 
 
 #define START_X ((GFX_LCD_WIDTH - 16) / 2) // 16 NEEDS CHANGING
-#define START_Y ((GFX_LCD_HEIGHT - 16) / 2)
+#define START_Y ((GFX_LCD_HEIGHT - 32) / 2)
 #define SPRITE_WIDTH 16
 #define SPRITE_HEIGHT 32
 
@@ -31,6 +32,7 @@ struct entity player;
 
 // Create a buffer for what's behind a sprite
 gfx_sprite_t* behind_sprite;
+gfx_tilemap_t tilemap;
 
 
 int main(void) {
@@ -55,10 +57,22 @@ void begin(void) {
 	player.y = START_Y;
 	player.old_x = START_X;
 	player.old_y = START_Y;
-	player.speed = 2;
+	player.speed = 3;
 	player.sprite = alex_forward_still;
 
-	
+	// init tilemap NEEDS BETTER VARIABLE DECLARATION
+	tilemap.map = basic_grasspaths_map_map;
+	tilemap.tiles = basic_grass_tileset_tiles;
+	tilemap.type_width = gfx_tile_16_pixel;
+	tilemap.type_height = gfx_tile_16_pixel;
+	tilemap.tile_height = 16;
+	tilemap.tile_width = 16;
+	tilemap.draw_height = 15;
+	tilemap.draw_width = 20;
+	tilemap.height = 15;
+	tilemap.width = 20;
+	tilemap.y_loc = 0;
+	tilemap.x_loc = 0;
 
 	// init keypad
 	kb_SetMode(MODE_3_CONTINUOUS);
@@ -66,17 +80,18 @@ void begin(void) {
 
 	// init graphics
 	gfx_Begin();
-	gfx_SetPalette(player_palette, sizeof_player_palette, 0);
-	gfx_SetColor(1);
-	gfx_SetTextFGColor(2);
-	gfx_SetTextBGColor(1);
+	gfx_SetPalette(global_palette, sizeof_global_palette, 0);
+	gfx_SetColor(0);
+	gfx_SetTextFGColor(1);
+	gfx_SetTextBGColor(0);
 	gfx_SetTransparentColor(0);
 
 	gfx_SetDrawBuffer();
 
 	// Create and initialize a buffer for behind the sprite.
 	behind_sprite = gfx_MallocSprite(SPRITE_WIDTH, SPRITE_HEIGHT);
-	gfx_GetSprite(behind_sprite, player.x, player.y);
+	
+	
 
 }
 
@@ -90,6 +105,8 @@ bool should_loop(void) {
 }
 
 void draw(void) {
+	
+	gfx_Tilemap(&tilemap, 0, 0);
 	
 	draw_sprite(player.sprite);
 }
@@ -140,3 +157,4 @@ void draw_sprite(gfx_sprite_t *sprite) {
 	player.old_x = player.x;
 	player.old_y = player.y;
 }
+

@@ -1,5 +1,7 @@
-player_palette.h
-player_palette.c
+global_palette.h
+global_palette.c
 alex_forward_still.h
 alex_forward_still.c
+basic_grass_tileset.h
+basic_grass_tileset.c
 gfx.h
