@@ -35,8 +35,8 @@ bool should_loop(void);
 void draw(void);
 void logic(void);
 void update_player(void);
-void draw_sprite(Entity *entity);
-void animate_sprite(Entity *entity);
+void draw_sprite(Entity* entity);
+void animate_sprite(Entity* entity);
 
 Entity player;
 
@@ -55,8 +55,8 @@ gfx_sprite_t* alex[4][4] =
 
 int main(void) {
 	begin();
-	
-	while(should_loop()) {
+
+	while (should_loop()) {
 		logic();
 		gfx_BlitScreen(); // Draw to the back buffer.
 		draw();
@@ -65,7 +65,7 @@ int main(void) {
 	end();
 
 	return 0;
-	
+
 }
 
 void begin(void) {
@@ -126,9 +126,9 @@ bool should_loop(void) {
 }
 
 void draw(void) {
-	
+
 	gfx_Tilemap(&basic_tilemap, 0, 0);
-	
+
 	draw_sprite(&player);
 
 
@@ -151,7 +151,7 @@ void logic(void) {
 void update_player(void) {
 
 	int xChange = 0, yChange = 0;
-	
+
 	// Update player position
 	int arrow_keys = kb_Data[7];
 	if (arrow_keys & kb_Up) { yChange -= player.speed; player.direction = 2; }
@@ -161,10 +161,10 @@ void update_player(void) {
 
 	if (xChange != 0 || yChange != 0) player.is_moving = true;
 	else player.is_moving = false;
-	
+
 	player.x += xChange;
 	player.y += yChange;
-	
+
 
 	// Keep player in bounds
 	if (player.x < 0) player.x = 0;
@@ -172,11 +172,11 @@ void update_player(void) {
 	if (player.y < 0) player.y = 0;
 	if (player.y > GFX_LCD_HEIGHT - STD_SPRITE_HEIGHT) player.y = GFX_LCD_HEIGHT - STD_SPRITE_HEIGHT;
 
-	
+
 }
 
-void draw_sprite(Entity *entity) {
-	
+void draw_sprite(Entity* entity) {
+
 	/* Render the original background */
 	gfx_Sprite(behind_sprite, entity->old_x, entity->old_y);
 
@@ -193,8 +193,8 @@ void draw_sprite(Entity *entity) {
 
 void animate_sprite(Entity* entity) {
 
-	
-	
+
+
 	if (entity->is_moving) {
 		if (counter % 4 == 0) {
 			int target_sprite = entity->currentSprite += 1;
@@ -206,7 +206,7 @@ void animate_sprite(Entity* entity) {
 
 		}
 
-		
+
 	}
 	else entity->sprite = alex[entity->direction][0];
 
@@ -221,7 +221,7 @@ Create new thing:
 
 Entities:
 1. Add the png files to gfx folder
-2. Add the data to convimg.yaml 
+2. Add the data to convimg.yaml
 3. Run make gfx
 4. Make a new struct heriting from Entity struct.
 5. Implement code.
@@ -238,5 +238,3 @@ Tilemaps:
 
 
 */
-
-
