@@ -6,7 +6,22 @@ converts:
   - name: player_textures
     palette: global_palette
     images:
-      - alex_forward_still.png
+      - alex_forward1.png
+      - alex_forward2.png
+      - alex_forward3.png
+      - alex_forward4.png
+      - alex_right1.png
+      - alex_right2.png
+      - alex_right3.png
+      - alex_right4.png
+      - alex_back1.png
+      - alex_back2.png
+      - alex_back3.png
+      - alex_back4.png
+      - alex_left1.png
+      - alex_left2.png
+      - alex_left3.png
+      - alex_left4.png
   - name: tileset_textures
     palette: global_palette
     tilesets:
