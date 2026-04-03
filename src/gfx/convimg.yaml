@@ -6,7 +6,7 @@ converts:
   - name: player_textures
     palette: global_palette
     images:
-      - alex_forward1.png
+      - alex/alex_forward1.png
       - alex_forward2.png
       - alex_forward3.png
       - alex_forward4.png

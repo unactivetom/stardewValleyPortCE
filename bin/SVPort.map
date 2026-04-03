@@ -7,22 +7,22 @@ Section          Base   Top    High   Length
 .init.reruncheck D1A96D D1A96D             0h
 .init            D1A96D D1A997            2Ah
 .fini            D1A997 D1A9CB            34h
-.text            D1A9CB D1B0E2           717h
-.data            D1B0E2 D1EB4F          3A6Dh
-.rodata          D1EB4F D1EB71            22h
+.text            D1A9CB D1B02B           660h
+.data            D1B02B D1EA98          3A6Dh
+.rodata          D1EA98 D1EABD            25h
 .init_array      000000 000000             0h
 .ctors           000000 000000             0h
 .dtors           000000 000000             0h
 .fini_array      000000 000000             0h
-.bss             D052C6 D05300 D13FD8     3Ah
+.bss             D052C6 D052FD D13FD8     37h
 .header          D1A87F D1A882             3h
 
 Label                               Value
 ---------------------------------   ------
 ___low_bss                        = D052C6
-___len_bss                        = 00003A
+___len_bss                        = 000037
 ___heaptop                        = D13FD8
-___heapbot                        = D05300
+___heapbot                        = D052FD
 ___libs                           = D1A904
 ___init_array_count               = 000000
 ___ctors_count                    = 000000
@@ -33,26 +33,22 @@ __frameset                        = D1A9CB
 __frameset0                       = D1A9D9
 __imulu                           = D1A9E4
 __ineg                            = D1AA14
-__lcmpu                           = D1AA1D
-__ldvrmu                          = D1AA25
-__lremu                           = D1AA4D
-__sand                            = D1AA59
-__setflag                         = D1AA62
-_atomic_load_increasing_32        = D1AA6C
-_os_DisableHomeTextBuffer         = D1AA91
-_os_EnableHomeTextBuffer          = D1AAA3
-_malloc                           = D1AADA
-_free                             = D1ABAD
-__standard_malloc                 = D1AADA
-__standard_free                   = D1ABAD
-__standard_realloc                = D1AC70
+__sand                            = D1AA1D
+__setflag                         = D1AA26
+_os_DisableHomeTextBuffer         = D1AA30
+_os_EnableHomeTextBuffer          = D1AA42
+_malloc                           = D1AA79
+_free                             = D1AB4C
+__standard_malloc                 = D1AA79
+__standard_free                   = D1AB4C
+__standard_realloc                = D1AC0F
 __alloc_base                      = D052C6
-_heap_ptr                         = D1B0E2
+_heap_ptr                         = D1B02B
 _memcpy                           = 0000A4
-.missingappvar                    = D1EB4F
-.libloadname                      = D1EB54
+.missingappvar                    = D1EA98
+.libloadname                      = D1EA9D
 .libloadnamelen                   = 000007
-.webaddress                       = D1EB5C
+.webaddress                       = D1EAA5
 __start                           = D1A96D
 ___exithl                         = D1A997
 skip._exit                        = D1A997
@@ -60,63 +56,62 @@ skip.__Exit                       = D1A997
 skip._abort                       = D1A997
 _exit.sp                          = D1A998
 _exit.flash_wait_states           = D1A9A2
-_main                             = D1ACEE
-_begin                            = D1AD21
-_logic                            = D1AE4B
-_draw                             = D1AE67
-_draw_sprite                      = D1AEBB
-_get_fps                          = D1AF15
-_update_player                    = D1AF49
-_animate_sprite                   = D1B061
-_basic_grass_tileset_tile_0_data  = D1B0E5
-_basic_grass_tileset_tile_1_data  = D1B1E7
-_basic_grass_tileset_tile_2_data  = D1B2E9
-_basic_grass_tileset_tile_3_data  = D1B3EB
-_basic_grass_tileset_tile_4_data  = D1B4ED
-_basic_grass_tileset_tile_5_data  = D1B5EF
-_basic_grass_tileset_tile_6_data  = D1B6F1
-_basic_grass_tileset_tile_7_data  = D1B7F3
-_basic_grass_tileset_tile_8_data  = D1B8F5
-_basic_grass_tileset_tile_9_data  = D1B9F7
-_basic_grass_tileset_tile_10_data = D1BAF9
-_basic_grass_tileset_tile_11_data = D1BBFB
-_basic_grass_tileset_tile_12_data = D1BCFD
-_basic_grass_tileset_tile_13_data = D1BDFF
-_basic_grass_tileset_tile_14_data = D1BF01
-_basic_grass_tileset_tile_15_data = D1C003
-_basic_grass_tileset_tile_16_data = D1C105
-_basic_grass_tileset_tile_17_data = D1C207
-_basic_grass_tileset_tile_18_data = D1C309
-_basic_grass_tileset_tile_19_data = D1C40B
-_basic_grass_tileset_tile_20_data = D1C50D
-_basic_grass_tileset_tile_21_data = D1C60F
-_basic_grass_tileset_tile_22_data = D1C711
-_basic_grass_tileset_tile_23_data = D1C813
-_alex_forward1_data               = D1C915
-_alex_forward2_data               = D1CB17
-_alex_forward3_data               = D1CD19
-_alex_forward4_data               = D1CF1B
-_alex_right1_data                 = D1D11D
-_alex_right2_data                 = D1D31F
-_alex_right3_data                 = D1D521
-_alex_right4_data                 = D1D723
-_alex_back1_data                  = D1D925
-_alex_back2_data                  = D1DB27
-_alex_back3_data                  = D1DD29
-_alex_back4_data                  = D1DF2B
-_alex_left1_data                  = D1E12D
-_alex_left2_data                  = D1E32F
-_alex_left3_data                  = D1E531
-_alex_left4_data                  = D1E733
-_alex                             = D1E935
+_main                             = D1AC8D
+_begin                            = D1ACC0
+_logic                            = D1ADC2
+_draw                             = D1ADDE
+_draw_sprite                      = D1AE38
+_update_player                    = D1AE92
+_animate_sprite                   = D1AFAA
+_basic_grass_tileset_tile_0_data  = D1B02E
+_basic_grass_tileset_tile_1_data  = D1B130
+_basic_grass_tileset_tile_2_data  = D1B232
+_basic_grass_tileset_tile_3_data  = D1B334
+_basic_grass_tileset_tile_4_data  = D1B436
+_basic_grass_tileset_tile_5_data  = D1B538
+_basic_grass_tileset_tile_6_data  = D1B63A
+_basic_grass_tileset_tile_7_data  = D1B73C
+_basic_grass_tileset_tile_8_data  = D1B83E
+_basic_grass_tileset_tile_9_data  = D1B940
+_basic_grass_tileset_tile_10_data = D1BA42
+_basic_grass_tileset_tile_11_data = D1BB44
+_basic_grass_tileset_tile_12_data = D1BC46
+_basic_grass_tileset_tile_13_data = D1BD48
+_basic_grass_tileset_tile_14_data = D1BE4A
+_basic_grass_tileset_tile_15_data = D1BF4C
+_basic_grass_tileset_tile_16_data = D1C04E
+_basic_grass_tileset_tile_17_data = D1C150
+_basic_grass_tileset_tile_18_data = D1C252
+_basic_grass_tileset_tile_19_data = D1C354
+_basic_grass_tileset_tile_20_data = D1C456
+_basic_grass_tileset_tile_21_data = D1C558
+_basic_grass_tileset_tile_22_data = D1C65A
+_basic_grass_tileset_tile_23_data = D1C75C
+_alex_forward1_data               = D1C85E
+_alex_forward2_data               = D1CA60
+_alex_forward3_data               = D1CC62
+_alex_forward4_data               = D1CE64
+_alex_right1_data                 = D1D066
+_alex_right2_data                 = D1D268
+_alex_right3_data                 = D1D46A
+_alex_right4_data                 = D1D66C
+_alex_back1_data                  = D1D86E
+_alex_back2_data                  = D1DA70
+_alex_back3_data                  = D1DC72
+_alex_back4_data                  = D1DE74
+_alex_left1_data                  = D1E076
+_alex_left2_data                  = D1E278
+_alex_left3_data                  = D1E47A
+_alex_left4_data                  = D1E67C
+_alex                             = D1E87E
 _player                           = D052CC
 _basic_tilemap                    = D052E5
-_basic_grass_tileset_tiles_data   = D1E965
-_global_palette                   = D1E9AD
+_basic_grass_tileset_tiles_data   = D1E8AE
+_global_palette                   = D1E8F6
 _behind_sprite                    = D052F7
 _counter                          = D052FA
-_fps                              = D052FD
-_tilemap_map                      = D1EA23
+_.str                             = D1EABA
+_tilemap_map                      = D1E96C
 lib.LibLoad                       = D1A904
 _#gfx_Begin                       = D1A917
 _#gfx_End                         = D1A91B
@@ -126,7 +121,7 @@ _#gfx_SetDraw                     = D1A927
 _#gfx_SwapDraw                    = D1A92B
 _#gfx_Blit                        = D1A92F
 _#gfx_PrintInt                    = D1A933
-_#gfx_SetTextXY                   = D1A937
+_#gfx_PrintStringXY               = D1A937
 _#gfx_SetTextBGColor              = D1A93B
 _#gfx_SetTextFGColor              = D1A93F
 _#gfx_FillRectangle               = D1A943
