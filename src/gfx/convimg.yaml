@@ -7,21 +7,41 @@ converts:
     palette: global_palette
     images:
       - alex/alex_forward1.png
-      - alex_forward2.png
-      - alex_forward3.png
-      - alex_forward4.png
-      - alex_right1.png
-      - alex_right2.png
-      - alex_right3.png
-      - alex_right4.png
-      - alex_back1.png
-      - alex_back2.png
-      - alex_back3.png
-      - alex_back4.png
-      - alex_left1.png
-      - alex_left2.png
-      - alex_left3.png
-      - alex_left4.png
+      - alex/alex_forward2.png
+      - alex/alex_forward3.png
+      - alex/alex_forward4.png
+      - alex/alex_right1.png
+      - alex/alex_right2.png
+      - alex/alex_right3.png
+      - alex/alex_right4.png
+      - alex/alex_back1.png
+      - alex/alex_back2.png
+      - alex/alex_back3.png
+      - alex/alex_back4.png
+      - alex/alex_left1.png
+      - alex/alex_left2.png
+      - alex/alex_left3.png
+      - alex/alex_left4.png
+      - farmer/walk_front1.png
+      - farmer/walk_front2.png
+      - farmer/walk_front3.png
+      - farmer/walk_right1.png
+      - farmer/walk_right2.png
+      - farmer/walk_right3.png
+      - farmer/walk_back1.png
+      - farmer/walk_back2.png
+      - farmer/walk_back3.png
+      - farmer/walk_left1.png
+      - farmer/walk_left2.png
+      - farmer/walk_left3.png
+      - farmer/run_front1.png
+      - farmer/run_front2.png
+      - farmer/run_right1.png
+      - farmer/run_right2.png
+      - farmer/run_back1.png
+      - farmer/run_back2.png
+      - farmer/run_left1.png
+      - farmer/run_left2.png
   - name: tileset_textures
     palette: global_palette
     tilesets:

@@ -14,7 +14,7 @@ extern unsigned char tilemap_map[]; // include tilemap data
 #define TILEMAP_HEIGHT 15
 #define TILEMAP_WIDTH 20
 
-struct entity {
+typedef struct entity {
 	int x;
 	int y;
 	int old_x;
@@ -24,10 +24,8 @@ struct entity {
 	bool is_moving;
 	int direction;
 	int currentSprite;
-};
-typedef struct entity Entity;
-
-
+	bool sprint;
+} Entity;
 
 void begin(void);
 void end(void);
@@ -36,7 +34,8 @@ void draw(void);
 void logic(void);
 void update_player(void);
 void draw_sprite(Entity* entity);
-void animate_sprite(Entity* entity);
+void animate_sprite3(Entity* entity, gfx_sprite_t* sprite_array[4][3], int speed);
+void animate_sprite2(Entity* entity, gfx_sprite_t* sprite_array[4][2], int speed);
 
 Entity player;
 
@@ -52,6 +51,23 @@ gfx_sprite_t* alex[4][4] =
 	{alex_back1, alex_back2, alex_back3, alex_back4},
 	{alex_left1, alex_left2, alex_left3, alex_left4}
 };
+
+gfx_sprite_t* farmer_walk[4][3] =
+{
+	{walk_front1, walk_front2, walk_front3},
+	{walk_right1, walk_right2, walk_right3},
+	{walk_back1, walk_back2, walk_back3},
+	{walk_left1, walk_left2, walk_left3}
+};
+
+gfx_sprite_t* farmer_sprint[4][2] =
+{
+	{run_front1, run_front2},
+	{run_right1, run_right2},
+	{run_back1, run_back2},
+	{run_left1, run_left2}
+};
+
 
 int main(void) {
 	begin();
@@ -80,6 +96,8 @@ void begin(void) {
 	player.is_moving = false;
 	player.direction = 0;
 	player.currentSprite = 0;
+	player.sprint = false;
+
 
 	// init tilemap
 	basic_tilemap.map = tilemap_map;
@@ -95,9 +113,11 @@ void begin(void) {
 	basic_tilemap.y_loc = 0;
 	basic_tilemap.x_loc = 0;
 
+
 	// init keypad
 	kb_SetMode(MODE_3_CONTINUOUS);
 	kb_Scan();
+
 
 	// init graphics
 	gfx_Begin();
@@ -143,12 +163,18 @@ void logic(void) {
 	kb_Scan();
 
 	update_player();
-	animate_sprite(&player);
+
+	if (!player.sprint) animate_sprite3(&player, farmer_walk, 4);
+	else animate_sprite2(&player, farmer_sprint, 2);
+
 	counter++;
 
 }
 
 void update_player(void) {
+
+	if (kb_Data[1] & kb_2nd) player.speed = 4;
+	else player.speed = 2;
 
 	int xChange = 0, yChange = 0;
 
@@ -168,7 +194,7 @@ void update_player(void) {
 
 	// Keep player in bounds
 	if (player.x < 0) player.x = 0;
-	if (player.x > GFX_LCD_WIDTH - STD_SPRITE_WIDTH) player.x = GFX_LCD_WIDTH - STD_SPRITE_HEIGHT;
+	if (player.x > GFX_LCD_WIDTH - STD_SPRITE_WIDTH) player.x = GFX_LCD_WIDTH - STD_SPRITE_WIDTH;
 	if (player.y < 0) player.y = 0;
 	if (player.y > GFX_LCD_HEIGHT - STD_SPRITE_HEIGHT) player.y = GFX_LCD_HEIGHT - STD_SPRITE_HEIGHT;
 
@@ -191,27 +217,38 @@ void draw_sprite(Entity* entity) {
 	entity->old_y = entity->y;
 }
 
-void animate_sprite(Entity* entity) {
-
-
+void animate_sprite3(Entity* entity, gfx_sprite_t* sprite_array[4][3], int speed) {
 
 	if (entity->is_moving) {
-		if (counter % 4 == 0) {
-			int target_sprite = entity->currentSprite += 1;
-			if (target_sprite > 3) {
-				target_sprite = 0;
+		if (counter % speed == 0) {
+			int target_frame = entity->currentSprite += 1;
+			if (target_frame == 3) {
+				target_frame = 0;
 				entity->currentSprite = 0;
 			}
-			entity->sprite = alex[entity->direction][target_sprite];
+			entity->sprite = sprite_array[entity->direction][target_frame];
 
 		}
 
+	}
+	else entity->sprite = sprite_array[entity->direction][0];
+
+}
+void animate_sprite2(Entity* entity, gfx_sprite_t* sprite_array[4][2], int speed) {
+
+	if (entity->is_moving) {
+		if (counter % speed == 0) {
+			int target_frame = entity->currentSprite += 1;
+			if (target_frame == 2) {
+				target_frame = 0;
+				entity->currentSprite = 0;
+			}
+			entity->sprite = sprite_array[entity->direction][target_frame];
+
+		}
 
 	}
-	else entity->sprite = alex[entity->direction][0];
-
-
-
+	else entity->sprite = sprite_array[entity->direction][0];
 
 }
 
@@ -227,13 +264,14 @@ Entities:
 5. Implement code.
 
 Tilemaps:
-1. Check if you use the right tilemap
+1. Check if you use the right tileset
 2. Add .csv file to tilemap folder
 3. Add to makefile
 4. Create new gfx_tilemap_t and init variables in begin()
 
 
-
+IMPORTANT NOTES:
+-animations can only have a certain amount of frames, or function overloading (multiple versions of the same function)
 
 
 
